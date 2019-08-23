@@ -10,6 +10,9 @@ use Omnipay\Cybersource\Message\RefundRequest;
  *
  * @link http:
  * //apps.cybersource.com/library/documentation/dev_guides/Secure_Acceptance_SOP/html/wwhelp/wwhimpl/js/html/wwhelp.htm
+ * @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
  */
 class Gateway extends AbstractGateway
 {
@@ -147,5 +150,12 @@ class Gateway extends AbstractGateway
         $pairs = implode(',', $data_to_sign);
 
         return base64_encode(hash_hmac('sha256', $pairs, $this->getSecretKey(), true));
+    }
+
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
     }
 }
